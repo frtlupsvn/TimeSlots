@@ -10,6 +10,8 @@ import UIKit
 
 class DayCollectionViewCell: UICollectionViewCell {
     
+    var zoomDay:ZoomDay!
+    
     override func drawRect(rect: CGRect) {
         
         self.backgroundColor = UIColor.whiteColor()
@@ -21,13 +23,15 @@ class DayCollectionViewCell: UICollectionViewCell {
         // Draw line seperator Hours
         for i in 1...23{
             let poitDraw:CGPoint = CGPoint(x:150 , y:(100*i) )
-            draLine(poitDraw)
+            drawLine(poitDraw)
         }
+        
+        loadZoomDay(self.zoomDay)
         
         setNeedsDisplay()
     }
     
-    func draLine(atPoint:CGPoint){
+    func drawLine(atPoint:CGPoint){
         
         let aPath = UIBezierPath()
 
@@ -46,8 +50,9 @@ class DayCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func addZoomSpanItem(item:ZoomSpanItemView){
-       self.addSubview(item)
+    private func loadZoomDay(item:ZoomDay){
+        let zoomSpanItem = ZoomSpanItemView(zoomEvent: item.eventArray[0] as! ZoomEvent)
+        self.addSubview(zoomSpanItem)
     }
     
 

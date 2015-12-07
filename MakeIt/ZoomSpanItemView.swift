@@ -10,9 +10,12 @@ import UIKit
 
 class ZoomSpanItemView: UIView {
     
-    //Time
-    var startTime:Float!
-    var endTime:Float!
+    //ZoomEvent
+    var zoomEvent:ZoomEvent!
+    
+    var jumpTime = 0.25 // 15minutes
+    var heightOfHour = 100.0
+    
     
     //Elements
     var fakeBtn:UIImageView!
@@ -27,21 +30,21 @@ class ZoomSpanItemView: UIView {
     
     //Frame
     var frameOfView:CGRect?
+    var currentTransform:CGAffineTransform?
     
     
     
-    init(start:Float , end:Float){
+    init(zoomEvent:ZoomEvent){
         
         super.init(frame: CGRectMake(0,0,0,0))
         
-        self.startTime = start
-        self.endTime = end
+        self.zoomEvent = zoomEvent
         
         //constant: height of 1 hour
         let heightOfOneHour = Float(100)
         
-        let positionYStart = startTime * heightOfOneHour
-        let heightOfView = (endTime - startTime) * heightOfOneHour
+        let positionYStart = self.zoomEvent.startTime * heightOfOneHour
+        let heightOfView = (self.zoomEvent.endTime - self.zoomEvent.startTime) * heightOfOneHour
         
         self.frame = CGRectMake(10, CGFloat(positionYStart), 60, CGFloat(heightOfView))
         
@@ -64,6 +67,7 @@ class ZoomSpanItemView: UIView {
         
         //default
         fakeBtnTapped = false
+        self.currentTransform = self.transform
         
     }
     
@@ -73,14 +77,20 @@ class ZoomSpanItemView: UIView {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
-        
+            
             NSNotificationCenter.defaultCenter().postNotificationName("Zoom_Notif_DisableScrollView", object: nil)
-
             let location = touch.locationInView(self)
             self.pointTouchStart = location
-            if (location.y > self.frame.size.height-15){
-                print("Fake button zone")
+            
+            if (location.y > self.frame.size.height-30){
                 fakeBtnTapped = true
+                fakeBtn.image = UIImage(named: "btnDag-active@2x.png")
+            }else{
+
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.greenPart.backgroundColor = UIColor(red: 139.0/255.0, green: 216.0/255.0, blue: 195.0/255.0, alpha: 1.0)
+                    self.transform = CGAffineTransformScale(self.currentTransform!, 1.1, 1.1)
+                    }, completion: nil)
             }
         }
     }
@@ -88,11 +98,10 @@ class ZoomSpanItemView: UIView {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.locationInView(self)
-            print(location)
             if (fakeBtnTapped==true){
-                if (location.y>20){
+                if (location.y > (CGFloat(jumpTime*heightOfHour)) ){
                     UIView.animateWithDuration(0.0, animations: { () -> Void in
-                        var heightChange = (location.y - self.pointTouchStart!.y)
+                        let heightChange = (location.y - self.pointTouchStart!.y)
                         self.drawLayout(heightChange)
                         }, completion: nil)
                 }
@@ -111,9 +120,16 @@ class ZoomSpanItemView: UIView {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         fakeBtnTapped = false
-                    NSNotificationCenter.defaultCenter().postNotificationName("Zoom_Notif_AnableScrollView", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("Zoom_Notif_AnableScrollView", object: nil)
         // Update Frame
         self.frameOfView = self.frame
+        fakeBtn.image = UIImage(named: "btnDag@2x.png")
+
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.transform = CGAffineTransformScale(self.currentTransform!, 1.0, 1.0)
+            self.greenPart.backgroundColor = UIColor(red: 69.0/255.0, green: 202.0/255.0, blue: 180.0/255.0, alpha: 1.0)
+            
+            }, completion: nil)
     }
     
     //Function Layout Update

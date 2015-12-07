@@ -23,6 +23,8 @@
 		5A2FA6B41C13EF3800A2F2DA /* ZoomDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FA6B31C13EF3800A2F2DA /* ZoomDay.swift */; };
 		5A2FA6BB1C13FBB400A2F2DA /* btnDag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2FA6BA1C13FBB400A2F2DA /* btnDag@2x.png */; };
 		5A2FA6BD1C1403A600A2F2DA /* ZoomSpanItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FA6BC1C1403A600A2F2DA /* ZoomSpanItemView.swift */; };
+		5AA4BEF11C1574B900BF8AD5 /* ZoomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4BEF01C1574B900BF8AD5 /* ZoomEvent.swift */; };
+		5AA4BEF31C1599BE00BF8AD5 /* btnDag-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4BEF21C1599BE00BF8AD5 /* btnDag-active@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		5A2FA6B31C13EF3800A2F2DA /* ZoomDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomDay.swift; sourceTree = "<group>"; };
 		5A2FA6BA1C13FBB400A2F2DA /* btnDag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnDag@2x.png"; sourceTree = "<group>"; };
 		5A2FA6BC1C1403A600A2F2DA /* ZoomSpanItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomSpanItemView.swift; sourceTree = "<group>"; };
+		5AA4BEF01C1574B900BF8AD5 /* ZoomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomEvent.swift; sourceTree = "<group>"; };
+		5AA4BEF21C1599BE00BF8AD5 /* btnDag-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnDag-active@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5A2FA6B31C13EF3800A2F2DA /* ZoomDay.swift */,
+				5AA4BEF01C1574B900BF8AD5 /* ZoomEvent.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 		5A2FA6B51C13F99700A2F2DA /* item */ = {
 			isa = PBXGroup;
 			children = (
+				5AA4BEF21C1599BE00BF8AD5 /* btnDag-active@2x.png */,
 				5A2FA6BA1C13FBB400A2F2DA /* btnDag@2x.png */,
 				5A2FA6BC1C1403A600A2F2DA /* ZoomSpanItemView.swift */,
 			);
@@ -305,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2FA67D1C12F2CD00A2F2DA /* LaunchScreen.storyboard in Resources */,
+				5AA4BEF31C1599BE00BF8AD5 /* btnDag-active@2x.png in Resources */,
 				5A2FA67A1C12F2CD00A2F2DA /* Assets.xcassets in Resources */,
 				5A2FA6BB1C13FBB400A2F2DA /* btnDag@2x.png in Resources */,
 				5A2FA6751C12F2CD00A2F2DA /* Main.storyboard in Resources */,
@@ -342,6 +349,7 @@
 				5A2FA6A11C12F3B600A2F2DA /* DayCollectionViewCell.swift in Sources */,
 				5A2FA6B41C13EF3800A2F2DA /* ZoomDay.swift in Sources */,
 				5A2FA6AB1C13E60E00A2F2DA /* HeaderHourCollectionViewCell.swift in Sources */,
+				5AA4BEF11C1574B900BF8AD5 /* ZoomEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MakeIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomcancode.MakeIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MakeIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomcancode.MakeIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";

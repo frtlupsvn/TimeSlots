@@ -29,12 +29,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //sample date
         
         var sample1 : ZoomDay = ZoomDay(stringDate: "20-11-2015")
+        var zoomEvent1 = ZoomEvent(startTime: 2, endTime: 3);
+        sample1.addEvent(zoomEvent1)
+        
         arrayEvents.addObject(sample1)
         
         var sample2 : ZoomDay = ZoomDay(stringDate: "21-11-2015")
+        var zoomEvent2 = ZoomEvent(startTime: 4, endTime: 6);
+        sample2.addEvent(zoomEvent2)
         arrayEvents.addObject(sample2)
         
         var sample3 : ZoomDay = ZoomDay(stringDate: "25-11-2015")
+        var zoomEvent3 = ZoomEvent(startTime: 3.5, endTime: 6);
+        sample3.addEvent(zoomEvent3)
         arrayEvents.addObject(sample3)
         
         //Test
@@ -75,8 +82,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if (collectionView == myCollection){
             let cell:DayCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("DayCollectionViewCell", forIndexPath: indexPath) as! DayCollectionViewCell
             
-            let item = ZoomSpanItemView(start: 1, end: 3)
-            cell.addZoomSpanItem(item)
+            let zoomDay = self.arrayEvents.objectAtIndex(indexPath.row) as! ZoomDay
+            cell.zoomDay = zoomDay
             
             return cell
         }
