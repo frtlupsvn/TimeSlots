@@ -35,8 +35,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         arrayEvents.addObject(sample1)
         
         var sample2 : ZoomDay = ZoomDay(stringDate: "21-11-2015")
+        
         var zoomEvent2 = ZoomEvent(startTime: 4, endTime: 6);
         sample2.addEvent(zoomEvent2)
+        
+        var zoomEvent4 = ZoomEvent(startTime: 1, endTime: 3);
+        sample2.addEvent(zoomEvent4)
+        
         arrayEvents.addObject(sample2)
         
         var sample3 : ZoomDay = ZoomDay(stringDate: "25-11-2015")

@@ -20,6 +20,7 @@ class ZoomSpanItemView: UIView {
     //Elements
     var fakeBtn:UIImageView!
     var greenPart:UIView!
+    var lblTime:UILabel!
     
     //Init Parameter
     var fakeBtnTapped:Bool!
@@ -51,6 +52,7 @@ class ZoomSpanItemView: UIView {
         // Update Frame
         self.frameOfView = self.frame
         
+        
         //green
         greenPart = UIView(frame: CGRectMake(0,0,self.frame.size.width,self.frame.size.height-8))
         greenPart.backgroundColor = UIColor(red: 69.0/255.0, green: 202.0/255.0, blue: 180.0/255.0, alpha: 1.0)
@@ -70,6 +72,8 @@ class ZoomSpanItemView: UIView {
         self.currentTransform = self.transform
         
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

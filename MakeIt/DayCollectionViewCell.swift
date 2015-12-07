@@ -26,8 +26,9 @@ class DayCollectionViewCell: UICollectionViewCell {
             drawLine(poitDraw)
         }
         
-        loadZoomDay(self.zoomDay)
-        
+        if (self.zoomDay.eventArray.count > 0){
+            loadZoomDay(self.zoomDay)
+        }
         setNeedsDisplay()
     }
     
@@ -51,8 +52,12 @@ class DayCollectionViewCell: UICollectionViewCell {
     }
     
     private func loadZoomDay(item:ZoomDay){
-        let zoomSpanItem = ZoomSpanItemView(zoomEvent: item.eventArray[0] as! ZoomEvent)
-        self.addSubview(zoomSpanItem)
+                
+        for var index = 0; index < item.eventArray.count; ++index {
+            let zoomSpanItem = ZoomSpanItemView(zoomEvent: item.eventArray[index] as! ZoomEvent)
+            self.addSubview(zoomSpanItem)
+        }
+
     }
     
 
